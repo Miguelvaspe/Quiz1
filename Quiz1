@@ -1,0 +1,29 @@
+--#1 - Creo el tablespace big_tbs_miguel
+CREATE TABLESPACE big_tbs_miguel DATAFILE
+'dfquiz.dbf' SIZE 1024M;
+
+--#2 - Creo el tablespace quiz1
+CREATE TABLESPACE quiz1 DATAFILE
+'dfquiz1.dbf' SIZE 200M,
+'dfquiz2.dbf' SIZE 200M,
+'dfquiz3.dbf' SIZE 200M
+AUTOEXTEND ON NEXT 600M MAXSIZE 1000M
+EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO
+ONLINE;
+
+--#3 - Creo el perfil profile1
+CREATE PROFILE profile1 LIMIT 
+SESSIONS_PER_USER          UNLIMITED
+CPU_PER_SESSION            UNLIMITED
+FAILED_LOGIN_ATTEMPTS      UNLIMITED
+IDLE_TIME                   15;
+
+--#3 - Creo el usuario user1
+CREATE USER user1
+IDENTIFIED BY user123
+DEFAULT TABLESPACE quiz1
+PROFILE profile1;
+
+--#4 - Al usuario user1 le permito conectarse a la aplicación 
+GRANT CONNECT TO user1;
