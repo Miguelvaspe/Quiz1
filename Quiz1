@@ -19,11 +19,11 @@ CPU_PER_SESSION            UNLIMITED
 FAILED_LOGIN_ATTEMPTS      UNLIMITED
 IDLE_TIME                   15;
 
---#3 - Creo el usuario user1
+--#4 - Creo el usuario user1
 CREATE USER user1
 IDENTIFIED BY user123
 DEFAULT TABLESPACE quiz1
 PROFILE profile1;
 
---#4 - Al usuario user1 le permito conectarse a la aplicación 
+--#5 - Al usuario user1 le permito conectarse a la aplicación 
 GRANT CONNECT TO user1;
